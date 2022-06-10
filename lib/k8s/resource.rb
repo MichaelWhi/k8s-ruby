@@ -35,7 +35,7 @@ module K8s
         # recurse
         Dir.glob("#{path}/*.{yml,yaml}").sort.map { |dir| from_files(dir) }.flatten
       else
-        YAML.safe_load_stream(File.read(path), path).map{ |doc| new(doc) }
+        YAML.safe_load_stream(File.read(path), filename: path).map{ |doc| new(doc) }
       end
     end
 
